@@ -2,7 +2,7 @@
 const userSchema=new mongoose.Schema({
     name:String,
     username:String,
-    password:String,
+    passwordHashed:String,
     profession:String,
     location:String,
     phone:Number,
