@@ -8,26 +8,11 @@ router.get('/',async (req,res)=>{
         const users=await User.find({})
         res.send(users)
     }
-    catch(error){
+    catch(error){ 
         res.statut(500).json({error:"something went wrong"})
     }
 })
-router.post('/',async (req,res)=>{
-    try{
-        
-        const {name,username,password,profession,location,phone}=req.body
-        const saltRounds=10
-        passwordHashed=await bcrypt.hash(password,saltRounds)
-        const user=new User({
-            name,username,passwordHashed,profession,location,phone
-        })
-        await user.save()
-        res.json(user)
-    }
-    catch(error){
-        res.json({error})
-    }
-})
+
 
 router.put('/:id', async (req, res) => {
     const { id } = req.params;
@@ -49,5 +34,7 @@ router.put('/:id', async (req, res) => {
         res.status(500).json({ error: "Something went wrong" });
     }
 });
+
+
 
 module.exports=router

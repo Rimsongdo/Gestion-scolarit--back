@@ -1,11 +1,10 @@
 {const mongoose=require('mongoose')
 const userSchema=new mongoose.Schema({
-    name:String,
-    username:String,
-    passwordHashed:String,
-    profession:String,
-    location:String,
-    phone:Number,
+    name:{ type: String, required: true },
+    username: { type: String, required: true, unique: true },
+    passwordHashed:{ type: String, required: true },
+    filiere:{ type: String, required: true },
+    carteID:{ type: String, required: true,unique:true },
 })
 
 userSchema.set('toJSON',{
